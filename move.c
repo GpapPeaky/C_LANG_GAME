@@ -1,7 +1,7 @@
 /**
  * @author GpapPeaky
  * 
- * @version 13/12/2023 
+ * @version 14/12/2023 
  * 
  * @brief A small C - Lang ga  me
 */
@@ -48,7 +48,6 @@ char** map_gen(){
 void print_controls(void){
 
     printf("MOVE.C (A SMALL C - LANG GAME)\n");
-
     printf("\nCOLLECT COINS\nPRESS 'e' TO EXIT\n");
 }
 
@@ -93,7 +92,6 @@ void print_map(char** map){
 position move(char** map,player pl){
 
     position output;
-
     output = pl.coords;
 
     char input = getch();
@@ -123,7 +121,7 @@ int main(void){
 
     char** map = map_gen();
 
-    player.move = '@';
+    player.move = 197;
     player.coords.x = 1;
     player.coords.y = 1;
 

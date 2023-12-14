@@ -3,7 +3,6 @@
 A small game, as an introduction for myself into this sort of programming software
 
 __TODO:__ 
-          -Add dynamic map size
           -Add more maps
           -Add something to do :/
           -Add map traversal

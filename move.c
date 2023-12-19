@@ -3,13 +3,14 @@
  * 
  * @version 14/12/2023 
  * 
- * @brief A small C - Lang ga  me
+ * @brief A small C - Lang ga me
 */
 
 #include "move.h"
 
-#define MAX_SIZE_X 60
-#define MAX_SIZE_Y 50
+char** map;
+
+int coins = 0;
 
 int rows;
 int cols;
@@ -18,8 +19,8 @@ char** map_gen(){
 
     srand(time(NULL));
 
-    rows = rand() % MAX_SIZE_X;
-    cols = rand() % MAX_SIZE_Y;
+    rows = rand() % MAX_SIZE_X + 5;
+    cols = rand() % MAX_SIZE_Y + 5;
 
     printf("Generated y & x: %d,%d\n",cols,rows);
 
@@ -47,8 +48,8 @@ char** map_gen(){
 */
 void print_controls(void){
 
-    printf("MOVE.C (A SMALL C - LANG GAME)\n");
-    printf("\nCOLLECT COINS\nPRESS 'e' TO EXIT\n");
+    printf("mov.C (A SMALL C - LANG GAME)\n");
+    printf("\nCOLLECT COINS\nPRESS 'e' TO EXIT\nCOINS COLLECTED: %d\n",coins);
 }
 
 /**
@@ -89,24 +90,22 @@ void print_map(char** map){
  * 
  * @returns The new player coordinates depending of the input
 */
-position move(char** map,player pl){
+position mov(char** map,player pl){
 
     position output;
     output = pl.coords;
 
-    char input = getch();
+    char input = _getch();
 
-    if(input == 'w'){
-        map[pl.coords.x][pl.coords.y] = ' '; /* Reset the now empty cell */
+    map[pl.coords.x][pl.coords.y] = ' '; /* Reset the now empty cell */
+
+    if(input == 'w' && output.x > 0 && map[output.x - 1][output.y] != '#'){
         output.x--;
-    }else if(input == 's'){
-        map[pl.coords.x][pl.coords.y] = ' ';
+    }else if(input == 's' && output.x < rows && map[output.x + 1][output.y] != '#'){
         output.x++;
-    }else if(input == 'a'){
-        map[pl.coords.x][pl.coords.y] = ' ';
+    }else if(input == 'a' && output.y > 0 && map[output.x][output.y - 1] != '#'){
         output.y--;
-    }else if(input == 'd'){
-        map[pl.coords.x][pl.coords.y] = ' ';
+    }else if(input == 'd' && output.y < cols && map[output.x][output.y + 1] != '#'){
         output.y++;
     }else if(input == 'e'){
         exit(EXIT_SUCCESS);
@@ -119,7 +118,7 @@ int main(void){
 
     player player;
 
-    char** map = map_gen();
+    map = map_gen();
 
     player.move = 197;
     player.coords.x = 1;
@@ -129,12 +128,12 @@ int main(void){
 
     while(1){
 
-        player.coords = move(map,player);
+        player.coords = mov(map,player);
         system("cls");
         update_map(map,player);
         print_map(map);
         print_controls();
     }
 
-    return 0;
+    return SUCCESS;
 }

@@ -11,6 +11,12 @@
 #include <conio.h>
 #include <time.h>
 
+#define SUCCESS 0
+#define FAILURE -1
+
+#define MAX_SIZE_X 15
+#define MAX_SIZE_Y 25
+
 #ifndef MOVE
 #define MOVE
 
@@ -38,9 +44,18 @@ typedef struct player{
     position coords;
 }player;
 
+extern int coins;
+
 extern int rows;
 extern int cols;
 
+extern char** map;
+
+char** get_map(void);
+
+/**
+ * @brief Generates the map
+*/
 char** map_gen(void);
 
 /**
@@ -71,6 +86,6 @@ void print_map(char** map);
  * 
  * @returns The new player coordinates depending of the input
 */
-position move(char** map,player pl);
+position mov(char** map,player pl);
 
 #endif

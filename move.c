@@ -8,6 +8,8 @@
 
 #include "move.h"
 
+char wall = 178;
+
 char** map;
 
 int coins = 0;
@@ -33,7 +35,7 @@ char** map_gen(){
     for(int i = 0; i < rows; i++){
         for (int j = 0; j < cols; j++){
             if (i == 0 || i == rows - 1 || j == 0 || j == cols - 1) {
-                map[i][j] = '#';
+                map[i][j] = wall;
             }else{
                 map[i][j] = ' ';
             }
@@ -99,13 +101,13 @@ position mov(char** map,player pl){
 
     map[pl.coords.x][pl.coords.y] = ' '; /* Reset the now empty cell */
 
-    if(input == 'w' && output.x > 0 && map[output.x - 1][output.y] != '#'){
+    if(input == 'w' && output.x > 0 && map[output.x - 1][output.y] != wall){
         output.x--;
-    }else if(input == 's' && output.x < rows && map[output.x + 1][output.y] != '#'){
+    }else if(input == 's' && output.x < rows && map[output.x + 1][output.y] != wall){
         output.x++;
-    }else if(input == 'a' && output.y > 0 && map[output.x][output.y - 1] != '#'){
+    }else if(input == 'a' && output.y > 0 && map[output.x][output.y - 1] != wall){
         output.y--;
-    }else if(input == 'd' && output.y < cols && map[output.x][output.y + 1] != '#'){
+    }else if(input == 'd' && output.y < cols && map[output.x][output.y + 1] != wall){
         output.y++;
     }else if(input == 'e'){
         exit(EXIT_SUCCESS);
@@ -120,7 +122,7 @@ int main(void){
 
     map = map_gen();
 
-    player.move = 197;
+    player.move = 3;
     player.coords.x = 1;
     player.coords.y = 1;
 

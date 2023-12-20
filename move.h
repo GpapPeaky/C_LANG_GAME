@@ -51,8 +51,6 @@ extern int cols;
 
 extern char** map;
 
-char** get_map(void);
-
 /**
  * @brief Generates the map
 */

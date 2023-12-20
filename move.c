@@ -17,6 +17,10 @@ int coins = 0;
 int rows;
 int cols;
 
+int random_beep(void){
+    return BEEP_LOW_PITCH + rand() % BEEP_HIGH_PITCH;
+}
+
 char** map_gen(){
 
     srand(time(NULL));
@@ -45,21 +49,12 @@ char** map_gen(){
     return map;
 }
 
-/**
- * @brief Small control's menu
-*/
 void print_controls(void){
 
     printf("mov.C (A SMALL C - LANG GAME)\n");
     printf("\nCOLLECT COINS\nPRESS 'e' TO EXIT\nCOINS COLLECTED: %d\n",coins);
 }
 
-/**
- * @brief Funtion that updates the map depending on the player's position
- * 
- * @param map Map of the game
- * @param pl Player 
-*/
 void update_map(char** map,player pl){
 
     map[pl.coords.x][pl.coords.y] = pl.move; /* Update the new cell */
@@ -67,11 +62,6 @@ void update_map(char** map,player pl){
     return;
 }
 
-/**
- * @brief Prints the map
- * 
- * @param map Map of the game
-*/
 void print_map(char** map){
 
     for(int j = 0 ; j < rows ; j++){
@@ -84,20 +74,15 @@ void print_map(char** map){
     return;
 }
 
-/**
- * @brief Reads the players move (from keyboard)
- * 
- * @param map Map of the game
- * @param pl Player (record movements)
- * 
- * @returns The new player coordinates depending of the input
-*/
 position mov(char** map,player pl){
 
     position output;
     output = pl.coords;
 
     char input = _getch();
+
+    Beep(random_beep(),55); /* After each input, a beep is played */
+    /* It also delays the output, which somehow makes it prettier... */
 
     map[pl.coords.x][pl.coords.y] = ' '; /* Reset the now empty cell */
 

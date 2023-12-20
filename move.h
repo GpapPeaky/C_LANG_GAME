@@ -10,9 +10,13 @@
 #include <stdlib.h>
 #include <conio.h>
 #include <time.h>
+#include <windows.h>
 
 #define SUCCESS 0
 #define FAILURE -1
+
+#define BEEP_HIGH_PITCH 900
+#define BEEP_LOW_PITCH 450
 
 #define MAX_SIZE_X 15
 #define MAX_SIZE_Y 25
@@ -44,12 +48,27 @@ typedef struct player{
     position coords;
 }player;
 
+/*____________________________*/
+
 extern int coins;
+
+/*____________________________*/
 
 extern int rows;
 extern int cols;
 
+/*____________________________*/
+
 extern char** map;
+
+/*____________________________*/
+
+/**
+ * @brief Makes A Random Beep
+ * 
+ * @returns A random beep noise, per input 
+*/
+int random_beep(void);
 
 /**
  * @brief Generates the map

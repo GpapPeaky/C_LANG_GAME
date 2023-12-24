@@ -15,9 +15,7 @@
 #define SUCCESS 0
 #define FAILURE -1
 
-#define BEEP_HIGH_PITCH 900
-#define BEEP_LOW_PITCH 450
-
+#define MOVE_BEEP 700
 #define MAX_SIZE_X 15
 #define MAX_SIZE_Y 25
 
@@ -64,11 +62,9 @@ extern char** map;
 /*____________________________*/
 
 /**
- * @brief Makes A Random Beep
- * 
- * @returns A random beep noise, per input 
+ * @brief Exit print
 */
-int random_beep(void);
+void exit_print(void);
 
 /**
  * @brief Generates the map

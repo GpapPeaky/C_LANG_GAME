@@ -1,21 +1,32 @@
 /**
  * @author GpapPeaky
  * 
- * @version 14/12/2023 
+ * @version 24/12/2023 
  * 
  * @brief A small C - Lang game
 */
 
+/* TODO: ADD ENEMIES ( NUMBERS RANDOMLY AT GENERATED POSITIONS IN THE MAP ) */
+
+#include <iostream>
+#include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 #include <time.h>
 #include <windows.h>
 
+/*____________________________*/
+
 #define SUCCESS 0
 #define FAILURE -1
 
-#define MOVE_BEEP 700
+/*____________________________*/
+
+#define MOVE_BEEP 700 /* Move beep c: */
+
+/*____________________________*/
+
 #define MAX_SIZE_X 15
 #define MAX_SIZE_Y 25
 
@@ -23,7 +34,7 @@
 #define MOVE
 
 /**
- * @brief Struct that contains a list of maps
+ * @brief Struct that contains a list of maps (TODO)
 */
 typedef struct maps{
     char** map;
@@ -48,7 +59,7 @@ typedef struct player{
 
 /*____________________________*/
 
-extern int coins;
+extern int enemy;
 
 /*____________________________*/
 
@@ -60,6 +71,19 @@ extern int cols;
 extern char** map;
 
 /*____________________________*/
+
+/**
+ * @brief Generates the enemies
+*/
+void enemy_gen(void);
+
+/**
+ * @brief Intro Jiggle
+ * 
+ * @param msg 0 INTRO
+ *           -1 OUTRO
+*/
+void jigg(int msg);
 
 /**
  * @brief Exit print

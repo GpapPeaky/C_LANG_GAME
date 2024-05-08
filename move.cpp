@@ -153,7 +153,7 @@ int main(void){
 
     map = map_gen();
 
-    player.move = 3;
+    player.move = '@'; /* Character to play */
     player.coords.x = 1;
     player.coords.y = 1;
 

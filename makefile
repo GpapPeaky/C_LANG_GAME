@@ -1,2 +1,9 @@
+SRCP = src/
+BINP = bin/
+
+SRC =\
+$(SRCP)PM_Main.cpp\
+$(SRCP)PM_Move.cpp
+
 all:
-	g++ move.cpp -o move
+	g++ $(SRC) -o $(BINP)PeakyMove
